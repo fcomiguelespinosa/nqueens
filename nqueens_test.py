@@ -33,6 +33,7 @@ def test_14queen_findSolutions(board_instance):
     finds, solutions = board_instance[6].findSolutions()
     assert finds == 365596
 
-def test_15queen_findSolutions(board_instance):
-    finds, solutions = board_instance[7].findSolutions()
-    assert finds == 2279184
+# This test takes more than 10 min. 
+#def test_15queen_findSolutions(board_instance):
+#    finds, solutions = board_instance[7].findSolutions()
+#    assert finds == 2279184
