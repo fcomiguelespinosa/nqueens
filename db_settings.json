@@ -1,0 +1,8 @@
+{
+	"settings":{
+		"user":"postgres",
+		"password":"challenge",
+		"host":"localhost",
+		"database":"nqueens"
+	}
+}
