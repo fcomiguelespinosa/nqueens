@@ -1,0 +1,4 @@
+sqlalchemy
+pytest
+psycopg2
+click
