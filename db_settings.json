@@ -1,8 +1,9 @@
 {
 	"settings":{
-		"user":"postgres",
+		"user":"challenge",
 		"password":"challenge",
-		"host":"localhost",
+		"host":"db",
+                "port":5432,
 		"database":"nqueens"
 	}
 }

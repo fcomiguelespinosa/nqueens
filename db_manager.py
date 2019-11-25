@@ -10,8 +10,8 @@ class QueenSolution():  #Base class to store the solutions it's mapped to the 'N
         self.queen_cols = queen_cols
 
 class dbConnection():
-    def __init__(self,user,password,host,database): #Creation of the db connection
-        self.engine = sqlalchemy.create_engine("postgresql://{}:{}@{}/{}".format(user,password,host,database))
+    def __init__(self,user,password,host,port,database): #Creation of the db connection
+        self.engine = sqlalchemy.create_engine("postgresql://{}:{}@{}:{}/{}".format(user,password,host,port,database))
         self.metadata = sqlalchemy.MetaData()
         self.metadata.reflect(self.engine)
 

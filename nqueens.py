@@ -17,16 +17,16 @@ def main(nqueens,iterative):
         with open('db_settings.json') as json_file: #Read the configuration for the db.
             data = json.load(json_file)
             p = data["settings"]
-            print(p)
             user = p['user']
             password = p['password']
             host = p['host']
+            port = p['port']
             database = p['database']
-        DB = dbConnection(user,password,host,database)
+        DB = dbConnection(user,password,host,port,database)
         for i in range(1,n+1): #Iterate over N to find the solutions and store the results
             board = Board(i)
-            DB.dropTable("{}queens".format(i))
-            DB.createTable(i,"{}queens".format(i))
+            DB.dropTable("queens{}".format(i))
+            DB.createTable(i,"queens{}".format(i))
             finds, solutions = board.findSolutions()
             print(finds)
             DB.wirteSolutions(solutions)
