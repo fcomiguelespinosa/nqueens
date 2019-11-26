@@ -45,8 +45,7 @@ def main(nqueens, iterative, solutions):
                     \nto create this solution's table".format(n))
     else:
         board = Board(n) #Create an object of Board type to find the solution of the n queens problem
-        finds, solutions = board.findSolutions()
-        solutions = DB.readSolutions("queens8".format(n))
+        finds, solutions = board.findSolutions() 
         print(finds)
 
 if __name__ == "__main__":

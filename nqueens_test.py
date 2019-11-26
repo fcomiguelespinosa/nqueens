@@ -17,7 +17,10 @@ def database_instance():
         host = p['host']
         port = p['port']
         database = p['database']
-    DB = dbConnection(user,password,"localhost",port,database)
+    try:
+        DB = dbConnection(user,password,"localhost",port,database)
+    except Exception:
+        return None
     return DB
 
 def test_8queen_findSolutions(board_instance):
@@ -53,7 +56,9 @@ def test_14queen_findSolutions(board_instance):
 #    finds, solutions = board_instance[7].findSolutions()
 #    assert finds == 2279184
 
-def test_db_writing(board_instance, database_instance): # Compare the DB results with the results given by the function
+def test_db_writing(board_instance, database_instance): # Comparition between the DB results and the results given by the function.
+    if database_instance is None:
+        pytest.skip("DB is needed for this test")
     database_instance.dropTable("testingTable" )
     database_instance.createTable(8,"testingTable")     # For this test case the Board has 8 queens and size 8x8
     finds, solutions = board_instance[0].findSolutions()
