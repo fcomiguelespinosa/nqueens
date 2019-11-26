@@ -12,6 +12,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /application
 
 #Install dependencies
+COPY requirements.txt /application
 RUN pip install -r requirements.txt
 
 #Copy project
