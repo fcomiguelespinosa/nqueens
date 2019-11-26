@@ -9,6 +9,9 @@ class QueenSolution():  #Base class to store the solutions it's mapped to the 'N
         self.queen_rows = queen_rows
         self.queen_cols = queen_cols
 
+    def __repr__(self):
+        return "{} {}".format(self.queen_rows,self.queen_cols)
+
 class dbConnection():
     def __init__(self,user,password,host,port,database): #Creation of the db connection
         self.engine = sqlalchemy.create_engine("postgresql://{}:{}@{}:{}/{}".format(user,password,host,port,database))
@@ -29,8 +32,21 @@ class dbConnection():
         self.metadata.create_all(self.engine)
         orm.mapper(QueenSolution, table_q)
 
-    def wirteSolutions(self, solutions): #Funtion to store all the solutions in the table 'Nqueens' from the database given-
+    def writeSolutions(self, solutions): #Function to store all the solutions in the table 'queensN' from the database.
         session = orm.sessionmaker(self.engine)()
         session.add_all(solutions)
         session.commit()
         orm.clear_mappers()
+
+    def readSolutions(self, tablename): #Function for testing, It's used to verify the DB write operation.
+        if tablename in self.metadata.tables.keys():
+            table_q = self.metadata.tables[tablename]
+            solutions = []
+            orm.mapper(QueenSolution, table_q)
+            session = orm.sessionmaker(self.engine)()
+            for queen_solution in session.query(QueenSolution):
+                solutions.append(queen_solution)
+            orm.clear_mappers()
+            return solutions
+        else:
+            return None
