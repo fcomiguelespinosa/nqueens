@@ -2,6 +2,16 @@ language: python
 python:
     - "3.7"
 
+# Initial set up
+before_install:
+    - sudo /etc/init.d/postgresql stop
+    - sudo /etc/init.d/postgresql start 9.6
+
+before_script:
+    - psql -c 'create database nqueens;' -U postgres
+    - psql -c 'create user challenge with encrypted password 'challenge';' -U postgres
+    - psql -c 'grant all privileges on database nqueens to challenge;' -U postgres
+
 # command to install dependencies
 install:
     - pip install -r requirements.txt
@@ -12,11 +22,6 @@ script:
 # DB configuration
 services:
     - postgresql
-
-before_script:
-    - psql -c 'create database nqueens;' -U postgres
-    - psql -c 'create user challenge with encrypted password 'challenge';' -U postgres
-    - psql -c 'grant all privileges on database nqueens to challenge;' -U postgres
 
 addons:
     postgresql: "9.6"
