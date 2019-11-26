@@ -27,4 +27,4 @@ addons:
     postgresql: "9.6"
 env:
     global:
-        - PGPORT=54321
+        - PGPORT=5432

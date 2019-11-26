@@ -17,7 +17,7 @@ def database_instance():
         host = p['host']
         port = p['port']
         database = p['database']
-    DB = dbConnection(user,password,host,port,database)
+    DB = dbConnection(user,password,"localhost",port,database)
     return DB
 
 def test_8queen_findSolutions(board_instance):

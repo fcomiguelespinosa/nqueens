@@ -3,7 +3,7 @@
 		"user":"challenge",
 		"password":"challenge",
 		"host":"db",
-                "port":5432,
+        "port":5432,
 		"database":"nqueens"
 	}
 }
