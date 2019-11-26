@@ -1,10 +1,25 @@
 language: python
 python:
-  - "3.7"
+    - "3.7"
 
 # command to install dependencies
 install:
-  - pip install -r requirements.txt
+    - pip install -r requirements.txt
 # command to run tests
 script:
-  - pytest
+    - pytest
+
+# DB configuration
+services:
+    - postgresql
+
+before_script:
+    - psql -c 'create database nqueens;' -U postgres
+    - psql -c 'create user challenge with encrypted password 'challenge';' -U postgres
+    - psql -c 'grant all privileges on database nqueens to challenge;' -U postgres
+
+addons:
+    postgresql: "9.6"
+env:
+    global:
+        - PGPORT=54321
