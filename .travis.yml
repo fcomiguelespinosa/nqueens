@@ -8,7 +8,7 @@ before_install:
     - sudo /etc/init.d/postgresql start 9.6
 
 before_script:
-    - psql -c "create database nqueens;"" -U postgres
+    - psql -c "create database nqueens;" -U postgres
     - psql -c "create user challenge with password 'challenge';" -U postgres
     - psql -c 'grant all privileges on database nqueens to challenge;' -U postgres
 
