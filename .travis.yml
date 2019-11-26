@@ -9,7 +9,7 @@ before_install:
 
 before_script:
     - psql -c 'create database nqueens;' -U postgres
-    - psql -c 'create user challenge with encrypted password 'challenge';' -U postgres
+    - psql -c 'create user challenge with encrypted password \'challenge\';' -U postgres
     - psql -c 'grant all privileges on database nqueens to challenge;' -U postgres
 
 # command to install dependencies
