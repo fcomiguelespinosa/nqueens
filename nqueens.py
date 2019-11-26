@@ -9,6 +9,7 @@ import json
 help = "Iterate over N and store the solutions in postgres")
 @click.option('--solutions', '-s', is_flag=True,\
 help = "Print all the N queens solutions stored in postgres")
+
 def main(nqueens, iterative, solutions):
     """
     Application to determinate all the solutions for the N queens problem.
